@@ -35,9 +35,13 @@ const INITIAL_WAVES = [
 const createRelaxingWaves = () => {
   const containerObjects = document.getElementsByClassName(CONTAINER_NAME);
 
-  Array.from(containerObjects).forEach((container) =>
-    createSvgObject(container)
-  );
+  Array.from(containerObjects).forEach((container) => {
+    container.setAttribute(
+      "background",
+      "linear-gradient(60deg, rgba(84, 58, 183, 1) 0%, rgba(0, 172, 193, 1) 100%"
+    );
+    createSvgObject(container);
+  });
 };
 
 /**
