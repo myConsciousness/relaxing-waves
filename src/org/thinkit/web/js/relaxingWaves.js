@@ -40,6 +40,11 @@ const createRelaxingWaves = () => {
   );
 };
 
+/**
+ * 波を出力する svg オブジェクトをコンテナ内に生成します。
+ *
+ * @param {HTMLCollectionOf<Element>} container
+ */
 const createSvgObject = (container) => {
   const svgObject = document.createElementNS(
     "http://www.w3.org/2000/svg",
@@ -59,6 +64,11 @@ const createSvgObject = (container) => {
   container.appendChild(svgObject);
 };
 
+/**
+ * svgの定義オブジェクトを生成し返却します。
+ *
+ * @returns svgの定義オブジェクト
+ */
 const getDefsObject = () => {
   const pathObject = document.createElementNS(
     "http://www.w3.org/2000/svg",
@@ -82,6 +92,11 @@ const getDefsObject = () => {
   return defsObject;
 };
 
+/**
+ * 波を表現するsvgグループを生成し返却します。
+ *
+ * @returns svgグループ
+ */
 const getSvgGroupObject = () => {
   const svgGroupObject = document.createElementNS(
     "http://www.w3.org/2000/svg",
