@@ -20,6 +20,11 @@
 const CONTAINER_NAME = "relaxing-waves-container";
 
 /**
+ * 波の初期背景色
+ */
+const INITIAL_WAVE_BACKGROUND =
+  "linear-gradient(60deg, rgba(84, 58, 183, 1) 0%, rgba(0, 172, 193, 1) 100%";
+/**
  * 波の初期値
  */
 const INITIAL_WAVES = [
@@ -36,10 +41,7 @@ const createRelaxingWaves = () => {
   const containerObjects = document.getElementsByClassName(CONTAINER_NAME);
 
   Array.from(containerObjects).forEach((container) => {
-    container.setAttribute(
-      "background",
-      "linear-gradient(60deg, rgba(84, 58, 183, 1) 0%, rgba(0, 172, 193, 1) 100%"
-    );
+    container.setAttribute("background", INITIAL_WAVE_BACKGROUND);
     createSvgObject(container);
   });
 };
@@ -101,7 +103,7 @@ const getDefsObject = () => {
  *
  * @returns svgグループ
  */
-const getSvgGroupObject = () => {
+const getSvgGroupObject = (waveColor = "") => {
   const svgGroupObject = document.createElementNS(
     "http://www.w3.org/2000/svg",
     "g"
@@ -109,23 +111,25 @@ const getSvgGroupObject = () => {
 
   svgGroupObject.setAttributeNS(null, "class", "parallax");
 
-  INITIAL_WAVES.forEach((waves) => {
-    const useObject = document.createElementNS(
-      "http://www.w3.org/2000/svg",
-      "use"
-    );
-
-    Object.keys(waves).forEach((attribute) => {
-      useObject.setAttributeNS(
-        "http://www.w3.org/1999/xlink",
-        "xlink:href",
-        "#gentle-wave"
+  if (waveColor.length <= 0) {
+    INITIAL_WAVES.forEach((waves) => {
+      const useObject = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "use"
       );
-      useObject.setAttributeNS(null, attribute, waves[attribute]);
-    });
 
-    svgGroupObject.appendChild(useObject);
-  });
+      Object.keys(waves).forEach((attribute) => {
+        useObject.setAttributeNS(
+          "http://www.w3.org/1999/xlink",
+          "xlink:href",
+          "#gentle-wave"
+        );
+        useObject.setAttributeNS(null, attribute, waves[attribute]);
+      });
+
+      svgGroupObject.appendChild(useObject);
+    });
+  }
 
   return svgGroupObject;
 };
