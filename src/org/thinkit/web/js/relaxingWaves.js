@@ -163,6 +163,13 @@ const getSvgGroupObject = (waveColor) => {
   return svgGroupObject;
 };
 
+/**
+ * カラーコードをRGB形式に変換し辞書の形式で返却します。
+ * 引数として渡されたカラーコードが空の場合は空の辞書を返却します。
+ *
+ * @param {String} colorCode カラーコード
+ * @returns RGB形式に変換されたカラー情報
+ */
 const toRgbFormat = (colorCode) => {
   if (!colorCode) {
     return {};
@@ -177,6 +184,14 @@ const toRgbFormat = (colorCode) => {
   };
 };
 
+/**
+ * カラーコードを補正します。
+ * カラーコードが "#" から始まっていない場合は ”#” を文字列の先頭に付加します。
+ * カラーコードが "#" から始まる場合は引数として渡されたカラーコードを返却します。
+ *
+ * @param {String} colorCode カラーコード
+ * @requires 補正されたカラーコード
+ */
 const correctColorCode = (colorCode) => {
   if (colorCode && !colorCode.startsWith("#")) {
     return "#" + colorCode;
