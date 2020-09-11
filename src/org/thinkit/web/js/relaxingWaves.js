@@ -51,7 +51,7 @@ const createRelaxingWaves = () => {
 /**
  * 波を出力する svg オブジェクトをコンテナ内に生成します。
  *
- * @param {HTMLCollectionOf<Element>} container
+ * @param {HTMLCollectionOf<Element>} container 波オブジェクトを格納するコンテナ
  */
 const createSvgObject = (container) => {
   const svgObject = document.createElementNS(
