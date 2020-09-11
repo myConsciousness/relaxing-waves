@@ -41,7 +41,7 @@ const createRelaxingWaves = () => {
     );
 
     if (waveBackground) {
-      container.setAttribute("background", waveBackground);
+      container.setAttribute("style", `background : ${waveBackground};`);
     }
 
     createSvgObject(container);
