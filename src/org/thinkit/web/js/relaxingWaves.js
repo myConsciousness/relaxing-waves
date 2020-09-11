@@ -20,18 +20,13 @@
 const CONTAINER_NAME = "relaxing-waves-container";
 
 /**
- * 波の初期背景色
- */
-const INITIAL_WAVE_BACKGROUND =
-  "linear-gradient(60deg, rgba(84, 58, 183, 1) 0%, rgba(0, 172, 193, 1) 100%";
-/**
  * 波の初期値
  */
 const INITIAL_WAVES = [
-  { x: 48, y: 0, fill: "rgba(255,255,255,0.7" },
-  { x: 48, y: 3, fill: "rgba(255,255,255,0.5)" },
-  { x: 48, y: 5, fill: "rgba(255,255,255,0.3" },
-  { x: 48, y: 7, fill: "#fff" },
+  { x: 48, y: 0, fill: { red: 255, green: 255, blue: 255, opacity: 0.7 } },
+  { x: 48, y: 3, fill: { red: 255, green: 255, blue: 255, opacity: 0.5 } },
+  { x: 48, y: 5, fill: { red: 255, green: 255, blue: 255, opacity: 0.3 } },
+  { x: 48, y: 7, fill: { red: 255, green: 255, blue: 255, opacity: 1.0 } },
 ];
 
 /**
@@ -41,7 +36,12 @@ const createRelaxingWaves = () => {
   const containerObjects = document.getElementsByClassName(CONTAINER_NAME);
 
   Array.from(containerObjects).forEach((container) => {
-    container.setAttribute("background", INITIAL_WAVE_BACKGROUND);
+    const waveBackground = container.getAttribute("wave-background");
+
+    if (waveBackground) {
+      container.setAttribute("background", waveBackground);
+    }
+
     createSvgObject(container);
   });
 };
@@ -65,7 +65,9 @@ const createSvgObject = (container) => {
   svgObject.setAttribute("shape-rendering", "auto");
 
   svgObject.appendChild(getDefsObject());
-  svgObject.appendChild(getSvgGroupObject());
+  svgObject.appendChild(
+    getSvgGroupObject(container.getAttribute("wave-color"))
+  );
 
   container.appendChild(svgObject);
 };
@@ -103,7 +105,7 @@ const getDefsObject = () => {
  *
  * @returns svgグループ
  */
-const getSvgGroupObject = (waveColor = "") => {
+const getSvgGroupObject = (waveColor) => {
   const svgGroupObject = document.createElementNS(
     "http://www.w3.org/2000/svg",
     "g"
@@ -111,27 +113,68 @@ const getSvgGroupObject = (waveColor = "") => {
 
   svgGroupObject.setAttributeNS(null, "class", "parallax");
 
-  if (waveColor.length <= 0) {
-    INITIAL_WAVES.forEach((waves) => {
-      const useObject = document.createElementNS(
-        "http://www.w3.org/2000/svg",
-        "use"
+  INITIAL_WAVES.forEach((waves) => {
+    const useObject = document.createElementNS(
+      "http://www.w3.org/2000/svg",
+      "use"
+    );
+
+    const waveRgbColors = toRgbFormat(waveColor);
+    const hasWaveRgbColors = Object.keys(waveRgbColors).length > 0;
+
+    Object.keys(waves).forEach((attribute) => {
+      useObject.setAttributeNS(
+        "http://www.w3.org/1999/xlink",
+        "xlink:href",
+        "#gentle-wave"
       );
 
-      Object.keys(waves).forEach((attribute) => {
-        useObject.setAttributeNS(
-          "http://www.w3.org/1999/xlink",
-          "xlink:href",
-          "#gentle-wave"
-        );
-        useObject.setAttributeNS(null, attribute, waves[attribute]);
-      });
+      if (attribute === "fill") {
+        const fillColors = waves["fill"];
+        let red, green, blue, opacity;
 
-      svgGroupObject.appendChild(useObject);
+        if (hasWaveRgbColors) {
+          red = waveRgbColors["red"];
+          green = waveRgbColors["green"];
+          blue = waveRgbColors["blue"];
+          opacity = fillColors["opacity"];
+        } else {
+          red = fillColors["red"];
+          green = fillColors["green"];
+          blue = fillColors["blue"];
+          opacity = fillColors["opacity"];
+        }
+
+        useObject.setAttributeNS(
+          null,
+          attribute,
+          `rgba(${red}, ${green}, ${blue}, ${opacity})`
+        );
+      } else {
+        useObject.setAttributeNS(null, attribute, waves[attribute]);
+      }
     });
-  }
+
+    svgGroupObject.appendChild(useObject);
+  });
 
   return svgGroupObject;
+};
+
+const toRgbFormat = (colorCode) => {
+  if (!colorCode) {
+    return {};
+  }
+
+  if (!colorCode.startsWith("#")) {
+    colorCode = "#" + colorCode;
+  }
+
+  return {
+    red: parseInt(colorCode.substring(1, 3), 16),
+    green: parseInt(colorCode.substring(3, 5), 16),
+    blue: parseInt(colorCode.substring(5, 7), 16),
+  };
 };
 
 createRelaxingWaves();
