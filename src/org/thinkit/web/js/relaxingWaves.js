@@ -36,7 +36,9 @@ const createRelaxingWaves = () => {
   const containerObjects = document.getElementsByClassName(CONTAINER_NAME);
 
   Array.from(containerObjects).forEach((container) => {
-    const waveBackground = container.getAttribute("wave-background");
+    const waveBackground = correctColorCode(
+      container.getAttribute("wave-background")
+    );
 
     if (waveBackground) {
       container.setAttribute("background", waveBackground);
@@ -166,15 +168,21 @@ const toRgbFormat = (colorCode) => {
     return {};
   }
 
-  if (!colorCode.startsWith("#")) {
-    colorCode = "#" + colorCode;
-  }
+  colorCode = correctColorCode(colorCode);
 
   return {
     red: parseInt(colorCode.substring(1, 3), 16),
     green: parseInt(colorCode.substring(3, 5), 16),
     blue: parseInt(colorCode.substring(5, 7), 16),
   };
+};
+
+const correctColorCode = (colorCode) => {
+  if (colorCode && !colorCode.startsWith("#")) {
+    return "#" + colorCode;
+  }
+
+  return colorCode;
 };
 
 createRelaxingWaves();
