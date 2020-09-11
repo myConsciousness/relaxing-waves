@@ -78,11 +78,4 @@
             transform: translate3d(85px, 0, 0);
   }
 }
-
-@media (max-width: 768px) {
-  .waves {
-    height: 40px;
-    min-height: 40px;
-  }
-}
 /*# sourceMappingURL=relaxing-waves.css.map */
