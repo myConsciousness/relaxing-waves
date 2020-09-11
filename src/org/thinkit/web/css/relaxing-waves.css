@@ -11,10 +11,6 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-.relaxing-waves-container {
-  background: linear-gradient(60deg, #543ab7 0%, #00acc1 100%);
-}
-
 .relaxing-waves-container .waves {
   position: relative;
   width: 100%;
