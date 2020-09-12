@@ -7,6 +7,37 @@
 Provide a relaxing wave for your website.<br>
 It is easy to install on your website and you can easily customize the background and color of the waves.
 
+## How To Use
+
+### 1. Download required files
+
+To use `Relaxing Waves`, you need the following JavaScript and CSS files.
+
+- [relaxingWaves.js](https://github.com/myConsciousness/relaxing-waves/blob/master/src/org/thinkit/web/js/relaxingWaves.js)
+- [relaxing-waves.css](https://github.com/myConsciousness/relaxing-waves/blob/master/src/org/thinkit/web/css/relaxing-waves.css)
+
+### 2. Import files on HTML
+
+**_CSS_**
+
+Add the following CSS import within the HTML head tag.<br>
+Specify the path to the downloaded `relaxing-waves.css`.
+
+```html
+<head>
+  <link rel="stylesheet" href="./path/to/relaxing-waves.css" />
+</head>
+```
+
+**_JavaScript_**
+
+Add the following JavaScript import within the HTML head tag, or at the bottom of body tag.<br>
+Specify the path to the downloaded `relaxingWaves.js`.
+
+```html
+<script src="./path/to/relaxingWaves.js"></script>
+```
+
 ## License
 
 ```
