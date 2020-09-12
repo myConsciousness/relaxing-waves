@@ -1,8 +1,11 @@
 # Relaxing Waves
 
-Relaxing Waves main repository.
-
 ## What is it?
+
+**_Give your website relaxing waves_**
+
+Provide a relaxing wave for your website.<br>
+It is easy to install on your website and you can easily customize the background and color of the waves.
 
 ## License
 
