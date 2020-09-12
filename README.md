@@ -16,7 +16,7 @@ To use `Relaxing Waves`, you need the following JavaScript and CSS files.
 - [relaxingWaves.js](https://github.com/myConsciousness/relaxing-waves/blob/master/src/org/thinkit/web/js/relaxingWaves.js)
 - [relaxing-waves.css](https://github.com/myConsciousness/relaxing-waves/blob/master/src/org/thinkit/web/css/relaxing-waves.css)
 
-### 2. Import files on HTML
+### 2. Import downloaded files on HTML
 
 **_CSS_**
 
