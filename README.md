@@ -4,8 +4,8 @@
 
 **_Give your website relaxing waves_**
 
-Provide a relaxing wave for your website.<br>
-It is easy to install on your website and you can easily customize the background and color of the waves.
+Provide `relaxing waves` for your website.<br>
+It is easy to add on your website and you can easily customize the background and color of the waves.
 
 ## How To Use
 
