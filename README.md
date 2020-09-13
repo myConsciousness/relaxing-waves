@@ -60,6 +60,10 @@ Provides a `wave-background` attribute to change the background color of a wave 
 
 You can change the color to any color by specifying a color code for each attribute.
 
+> **_Note:_**<br>
+> The color code you specify does not have to start with #.<br>
+> The background color of the wave can be specified with the `linear-gradient` function.
+
 ```html
 <body>
   <div
