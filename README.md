@@ -52,6 +52,24 @@ When `relaxingWaves.js` loads, it adds wave elements to all `relaxing-waves-cont
 </body>
 ```
 
+## Advanced Options
+
+You can change the background and color of waves to any color by adding the following attribute to an element with the class name `relaxing-waves-container`.
+
+Provides a `wave-background` attribute to change the background color of a wave to any color, and a `wave-color` attribute to change the wave color to any color.
+
+You can change the color to any color by specifying a color code for each attribute.
+
+```html
+<body>
+  <div
+    class="relaxing-waves-container"
+    wave-background="c3dce8"
+    wave-color="006994"
+  ></div>
+</body>
+```
+
 ## License
 
 ```
