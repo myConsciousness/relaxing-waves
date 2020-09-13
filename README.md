@@ -58,7 +58,7 @@ You can change the background and color of waves to any color by adding the foll
 
 Provides a `wave-background` attribute to change the background color of a wave to any color, and a `wave-color` attribute to change the wave color to any color.
 
-You can change the color to any color by specifying a color code for each attribute.
+You can change the color to any color by specifying a `color code` for each attribute.
 
 > **_Note:_**<br>
 > The color code you specify does not have to start with #.<br>
