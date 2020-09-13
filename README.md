@@ -38,6 +38,20 @@ Specify the path to the downloaded `relaxingWaves.js`.
 <script src="./path/to/relaxingWaves.js"></script>
 ```
 
+### 3. Add container for Relaxing Waves
+
+Add the following container to any location in the body tag where you want to place waves.<br>
+When `relaxingWaves.js` loads, it adds wave elements to all `relaxing-waves-container` elements in the body tag.
+
+> **_Note:_**<br>
+> The class name of the container must be `relaxing-waves-container`.
+
+```html
+<body>
+  <div class="relaxing-waves-container"></div>
+</body>
+```
+
 ## License
 
 ```
