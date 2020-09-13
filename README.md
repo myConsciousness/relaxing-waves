@@ -1,5 +1,7 @@
 # Relaxing Waves
 
+![relaxing-waves](https://user-images.githubusercontent.com/13072231/93008311-30cbd200-f5ae-11ea-9765-62b9490eb5c8.png)
+
 ## What is it?
 
 **_Give your website relaxing waves_**
